@@ -2,24 +2,28 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeTyped();
     setupMenuToggle();
     setupDynamicHeader();
+    smoothScroll();
+    detectDevice();
 });
 
 function initializeTyped() {
     const typedElement = document.querySelector('#im-a');
     if (typedElement) {
+        const typeSpeed = window.innerWidth < 768 ? 70 : 100;
+        const backSpeed = window.innerWidth < 768 ? 35 : 50;
         new Typed(typedElement, {
             strings: [
-                'Web Developer', 
-                'Adaptive', 
-                'Problem Solver', 
-                'Creative Thinker', 
+                'Web Developer',
+                'Adaptive',
+                'Problem Solver',
+                'Creative Thinker',
                 'Tech Enthusiast',
                 'Future-Ready',
                 'Creative Coder',
                 'Code Artisan'
             ],
-            typeSpeed: 100,
-            backSpeed: 50,
+            typeSpeed,
+            backSpeed,
             loop: true
         });
     }
@@ -28,74 +32,72 @@ function initializeTyped() {
 function setupMenuToggle() {
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('nav');
-
+    
     if (menuToggle && nav) {
         menuToggle.addEventListener('click', () => {
             nav.classList.toggle('active');
+        });
+
+        // Close menu after link click (mobile optimization)
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) nav.classList.remove('active');
+            });
         });
     }
 }
 
 function setupDynamicHeader() {
-    const header = document.getElementById("header");
-    const compactHeader = document.createElement("div");
-    compactHeader.id = "compact-header";
-    compactHeader.innerHTML = `
-        <a href="index.html" class="logo">Raven</a>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="skills.html">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    `;
-    document.body.insertBefore(compactHeader, document.body.firstChild);
+    const header = document.querySelector('header');
+    const compactHeader = document.querySelector('#compact-header');
+    const isMobile = window.innerWidth < 768;
 
-    let lastScrollTop = 0;
-    let ticking = false;
+    if (!isMobile && compactHeader) {
+        let lastScrollTop = 0;
+        let ticking = false;
+        const scrollThreshold = 200;
 
-    window.addEventListener("scroll", () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
-                if (scrollTop > lastScrollTop && scrollTop > 200) {
-                    // Scrolling down
-                    header.style.transform = "translateY(-100%)";
-                    compactHeader.style.transform = "translateY(0)";
-                } else if (scrollTop < lastScrollTop || scrollTop <= 200) {
-                    // Scrolling up or near the top
-                    header.style.transform = "translateY(0)";
-                    compactHeader.style.transform = "translateY(-100%)";
-                }
-                
-                lastScrollTop = scrollTop;
-                ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+                    if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+                        // Hide main header, show compact one
+                        header.style.transform = 'translateY(-100%)';
+                        compactHeader.style.transform = 'translateY(0)';
+                    } else if (scrollTop < lastScrollTop || scrollTop <= scrollThreshold) {
+                        // Show main header, hide compact one
+                        header.style.transform = 'translateY(0)';
+                        compactHeader.style.transform = 'translateY(-100%)';
+                    }
+
+                    lastScrollTop = scrollTop;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    }
+}
+
+function smoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
             });
-            ticking = true;
-        }
+        });
     });
 }
 
-// Add any additional functions or event listeners here
-
-// Example: Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Example: Form submission handling (if you have a contact form)
-const contactForm = document.querySelector('#contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        // Add your form submission logic here
-        console.log('Form submitted');
-    });
+function detectDevice() {
+    if ('ontouchstart' in window || navigator.maxTouchPoints) {
+        // Device is likely a mobile or tablet with touch capability
+        document.body.classList.add('touch-device');
+    } else {
+        // Device is likely a desktop or non-touch device
+        document.body.classList.add('non-touch-device');
+    }
 }

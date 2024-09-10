@@ -14,64 +14,25 @@
 
 /* Base font size for easier rem calculation */
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; /* 1rem = 10px for easier rem calculation */
 }
 
-#compact-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 9%;
-    z-index: 1000;
-    transform: translateY(-100%);
-    transition: transform 0.3s ease-in-out;
-}
-
-#compact-header .logo {
-    font-size: 2rem;
-}
-
-#compact-header nav a {
-    font-size: 1.4rem;
-    margin-left: 2rem;
-}
-
-#header {
-    transition: transform 0.3s ease-in-out;
-}
-
-/* General body styling */
-body {
-    width: 100%;
-    height: 100vh;
-    overflow-x: hidden;
-    background-color: white;
-    color: black;
-}
-
-/* Header section styling */
+/* Header styling */
 header {
-    margin-top: 20px;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1rem 9%;
+    padding: 1rem 5%;
     background-color: rgba(255, 255, 255, 0.9);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Logo styling */
 .logo {
     font-size: 3rem;
     color: black;
@@ -85,7 +46,12 @@ header {
     color: #808080;
 }
 
-/* Navigation links styling */
+/* Navigation styling */
+nav {
+    display: flex;
+    align-items: center;
+}
+
 nav a {
     font-size: 1.8rem;
     color: black;
@@ -99,6 +65,108 @@ nav a:hover,
 nav a.active {
     color: #808080;
     border-bottom: 3px solid #808080;
+}
+
+/* Mobile and tablet styles */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    header {
+        padding: 1rem 5%;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        background-color: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+        flex-direction: column;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        margin: 1rem 0;
+        text-align: center;
+    }
+
+    .menu-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 21px;
+        cursor: pointer;
+    }
+
+    .menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 3px;
+        background-color: #333;
+        transition: background-color 0.3s ease;
+    }
+}
+
+/* Compact header styling for larger screens */
+#compact-header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 5%;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+@media (min-width: 769px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: none;
+    }
+
+    nav {
+        display: flex;
+    }
+
+    #compact-header {
+        display: flex;
+    }
+
+    #compact-header a {
+        font-size: 1.6rem;
+        margin-left: 2rem;
+    }
+}
+
+/* General body styling */
+body {
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: white;
+    color: black;
 }
 
 /* Section base styling */
@@ -138,14 +206,16 @@ section {
 }
 
 /* Image styling with hover effect */
-.home-img img {
-    width: 32vw;
+.home-img picture img {
+    width: 100%;
+    max-width: 400px; /* Adjust based on your design */
+    height: auto;
     border-radius: 50%;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.home-img img:hover {
+.home-img picture img:hover {
     transform: scale(1.05);
     box-shadow: 0 0 35px rgba(0, 0, 0, 0.2);
 }
@@ -210,54 +280,4 @@ section {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
-}
-
-/* Responsive design for smaller screens */
-@media (max-width: 1000px) {
-    .home {
-        gap: 4rem;
-    }
-}
-
-@media(max-width: 995px) {
-    nav {
-        position: absolute;
-        display: none;
-        top: 100%;
-        right: 0;
-        width: 40%;
-        border-left: 3px solid black;
-        border-bottom: 3px solid black;
-        border-bottom-left-radius: 2rem;
-        padding: 1rem;
-        background-color: white;
-    }
-
-    nav.active {
-        display: block;
-    }
-
-    nav a {
-        display: block;
-        font-size: 2rem;
-        margin: 3rem 0;
-    }
-
-    .home {
-        flex-direction: column;
-        margin: 5rem 4rem;
-    }
-
-    .home .home-content h3 {
-        font-size: 2.5rem;
-    }
-
-    .home-content h1 {
-        font-size: 5rem;
-    }
-
-    .home-img img {
-        width: 70vw;
-        margin-top: 4rem;
-    }
 }
