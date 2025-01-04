@@ -6,11 +6,14 @@
     <meta name="description" content="Raven's personal website showcasing skills, projects, and contact information.">
     <title>Home</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="skills.css">
+    <link rel="stylesheet" href="projects.css">
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-
+    
     <header>
         <a href="index.html" class="logo">Raven</a>
         <div class="menu-toggle">
@@ -20,13 +23,13 @@
         </div>
         <nav>
             <a href="index.html" class="active">Home</a>
-            <a href="skills.html">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="contact.html">Contact</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
         </nav>
     </header>
 
-    <section class="section home">
+    <section id="home" class="section home">
         <div class="home-img">
             <picture>
                 <source srcset="main.jpg" media="(min-width: 1024px)" />
@@ -50,6 +53,134 @@
             <a href="contact.html" class="btn">Hire me</a>
         </div>
     </section>
+
+    <section id="skills" class="skills-section">
+        <div class="skills-container">
+            <h2>What I Do Best</h2>
+            <div class="skills-content">
+                <p>Here's a snapshot of the skills I bring to the table:</p>
+                <ul>
+                    <li>
+                        <strong>Software Skills:</strong> I’m proficient with Microsoft PowerPoint, Excel, Google Sheets, and Docs. I create compelling presentations and make complex data visually appealing.
+                    </li>
+                    <li>
+                        <strong>Creative Design:</strong> From photo and video editing to designing attention-grabbing graphics, I excel at crafting infographics and posters that communicate clearly and effectively.
+                    </li>
+                    <li>
+                        <strong>Web Development:</strong> I love in building user-friendly, responsive websites with a focus on smooth and stylish front-end design.
+                    </li>
+                    <li>
+                        <strong>Programming:</strong> I am skilled in Python, C, C++, and Java, and have a strong foundation in networking and technical stuff.
+                    </li>
+                    
+                </ul>
+                <p>Blending creativity with technical expertise to deliver results. Interested in learning more? <a href="contact.html">Let’s connect!</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="projects">
+        <h2>Featured Projects</h2>
+        <div class="projects-container">
+            <!-- Workout Progress Project -->
+            <div class="project">
+                <a href="https://github.com/Ravsalt/workout-progress" target="_blank" class="project-link">
+                    <div class="project-image">
+                        <img src="Workout.PNG" alt="Workout Progress">
+                    </div>
+                    <div class="project-info">
+                        <h3>Workout Progress</h3>
+                        <p>A web application to track and manage your workout routines and progress. Helps you stay motivated and reach your fitness goals.</p>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- Bible Verse Project -->
+            <div class="project">
+                <a href="https://github.com/Ravsalt/Bible_Verse" target="_blank" class="project-link">
+                    <div class="project-image">
+                        <img src="BibleP.PNG" alt="Bible Verse">
+                    </div>
+                    <div class="project-info">
+                        <h3>Bible Verse</h3>
+                        <p>An app that displays random Bible verses for inspiration and spiritual growth. A daily dose of wisdom and encouragement.</p>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- Calculator App -->
+            <div class="project">
+                <a href="https://github.com/Ravsalt/Calculator_app" target="_blank" class="project-link">
+                    <div class="project-image">
+                        <img src="Calculator.PNG" alt="Calculator App">
+                    </div>
+                    <div class="project-info">
+                        <h3>Calculator App</h3>
+                        <p>A simple yet functional calculator app for performing basic arithmetic operations. Designed to be intuitive and user-friendly.</p>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- Advance Google Project -->
+            <div class="project">
+                <a href="https://github.com/Ravsalt/Advance_Google" target="_blank" class="project-link">
+                    <div class="project-image">
+                        <img src="Advance_google.PNG" alt="Advance Google">
+                    </div>
+                    <div class="project-info">
+                        <h3>Advance Google</h3>
+                        <p>A project enhancing Google search functionalities with advanced filtering options. Aims to improve search efficiency and relevance.</p>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- Flower Project -->
+            <div class="project">
+                <a href="https://github.com/Ravsalt/Flower-" target="_blank" class="project-link">
+                    <div class="project-image">
+                        <img src="Flower.PNG" alt="Flower">
+                    </div>
+                    <div class="project-info">
+                        <h3>Flower</h3>
+                        <p>A creative project featuring a flower-themed app or website. Demonstrates design and development skills with a floral touch.</p>
+                    </div>
+                </a>
+            </div>
+    
+            <!-- RC Car Project -->
+            
+        </div>
+    </section>
+
+    <section id="contact" class="section contact-info">
+        <h2>Contact Information</h2>
+        <div class="info-container">
+            <!-- Bio Section -->
+            <div class="bio">
+                <p>Hello! I'm Raven, a passionate developer and designer. I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Feel free to reach out using the information below.</p>
+            </div>
+            
+            <!-- Contact Details Section -->
+            <div class="contact-details">
+                <h3>Get in Touch</h3>
+                <p><i class="fab fa-github"></i> <a href="https://github.com/Ravsalt" target="_blank" rel="noopener noreferrer">GitHub: Ravsalt</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:ravpogi10@gmail.com">Email: ravpogi10@gmail.com</a></p>
+                <p><i class="fab fa-facebook-f"></i> <a href="https://facebook.com/duero.10" target="_blank" rel="noopener noreferrer">Facebook: Raven</a></p>
+            </div>
+            
+            <!-- Social Media Icons Section -->
+            <div class="social-icons">
+                <h3>Follow Me</h3>
+                <a href="https://facebook.com/duero.10" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://github.com/Ravsalt" aria-label="GitHub" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://instagram.com" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Raven. All rights reserved.</p>
+    </footer>
     
     <script src="script.js"></script>
 </body>

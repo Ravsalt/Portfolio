@@ -90,6 +90,7 @@ nav a.active {
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         display: none;
         flex-direction: column;
+        z-index: 200;
     }
 
     nav.active {
@@ -116,6 +117,21 @@ nav a.active {
         height: 3px;
         background-color: #333;
         transition: background-color 0.3s ease;
+    }
+
+    /* Adding hamburger toggle icon active state */
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg);
+        top: 9px;
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg);
+        top: -9px;
     }
 }
 
@@ -208,7 +224,7 @@ section {
 /* Image styling with hover effect */
 .home-img picture img {
     width: 100%;
-    max-width: 400px; /* Adjust based on your design */
+    max-width: 400px;
     height: auto;
     border-radius: 50%;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
@@ -280,4 +296,22 @@ section {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
+}
+
+footer {
+    background-color: #fff;
+    padding: 1rem;
+    text-align: center;
+    color: #666;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .skills-container {
+        padding: 2rem;
+    }
 }

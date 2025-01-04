@@ -5,8 +5,6 @@
     margin-top: 60px; /* Adjust this value to be the height of your header */
 }
 
-
-
 .projects h2 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
@@ -30,13 +28,21 @@
     overflow: hidden;
     max-width: 300px; /* Consistent width */
     width: 100%;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
     padding: 1rem;
+    position: relative;
 }
 
 .project:hover {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Slightly enlarge the card */
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    background-color: #f1f1f1; /* Change background on hover */
+}
+
+.project-link {
+    text-decoration: none; /* Remove underline from the link */
+    color: inherit; /* Inherit the text color */
+    display: block; /* Make the entire card clickable */
 }
 
 .project-image img {
